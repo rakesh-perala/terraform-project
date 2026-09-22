@@ -24,6 +24,7 @@ resource "aws_instance" "jenkins" {
   subnet_id              = module.vpc.public_subnet_ids[0]
   vpc_security_group_ids = [aws_security_group.jenkins.id]
   key_name               = var.jenkins_key_name
+  iam_instance_profile   = aws_iam_instance_profile.jenkins.name
 
   associate_public_ip_address = true
   user_data_replace_on_change = true
